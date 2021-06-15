@@ -1,0 +1,12 @@
+version: "3.3"
+
+services:
+  montagu:
+    build: .
+    #image: sopelirc/sopel:latest
+    environment:
+      - PUID=997
+      - PGID=997
+    volumes:
+      - /home/dreamer/sources/montagu/sopelconf:/home/sopel/.sopel/
+      #- /home/dreamer/sources/montagu/requirements.txt:/pypi_packages.txt

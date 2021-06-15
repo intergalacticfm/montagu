@@ -1,0 +1,48 @@
+# -*- coding: utf8 -*-
+"""
+gfycat.py - Sopel gfy Module
+"""
+
+from sopel.module import commands, example
+import requests
+import urllib
+import re
+import random
+
+import gfycat
+from gfycat.client import GfycatClient
+from gfycat.constants import QUERY_ENDPOINT
+
+
+class GfyCat(GfycatClient):
+
+    def query(self, query):
+        self.check_token()
+
+        r = requests.get(QUERY_ENDPOINT + 'search' + '?search_text={}'.format(query), headers=self.headers)
+        response = r.json()
+
+        return response
+
+
+@commands('gfy')
+@example('.gfy cat')
+def giphy(bot, trigger):
+    """.gfy cat"""
+    API_ID = bot.config.apikeys.gfycat_id
+    API_SECRET = bot.config.apikeys.gfycat_secret
+    client = GfyCat(API_ID, API_SECRET)
+
+    user_input = urllib.parse.quote_plus(trigger.group(2))
+
+    result = client.query(user_input)
+    gifs = result['gfycats']
+    
+    if len(gifs) > 0:
+        rand_image = random.randint(0, len(gifs)-1)
+        obj = gifs[rand_image]
+        url = obj['gifUrl']
+
+        bot.say(url)
+    else:
+        bot.say('No gif found. Blame the dog.')

@@ -1,0 +1,4 @@
+sopel-modules.imdb
+sopel-modules.urban
+sopel-modules.weather
+geoip2
