@@ -1,4 +1,7 @@
 *.iml
 .idea
 /sopelconf/default.cfg
+/sopelconf/default.db
+/sopelconf/default.tell.db
+/sopelconf/default.reminders.db
 /sopelconf/sopel.pid
