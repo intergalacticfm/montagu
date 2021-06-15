@@ -23,4 +23,4 @@ def giphy(bot, trigger):
         image_url = giphy_json['data'][rand_image]['images']['original']['url']
         bot.say(image_url)
     else:
-        bot.say('No gif found. Blame bob')
+        bot.say('No gif found. Blame Bob')
