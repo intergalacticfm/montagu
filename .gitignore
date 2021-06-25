@@ -5,3 +5,4 @@
 /sopelconf/default.tell.db
 /sopelconf/default.reminders.db
 /sopelconf/sopel.pid
+/sopelconf/logs/
