@@ -3,24 +3,21 @@
 boobie.py - Sopel boobie Module + more
 """
 
-from sopel.module import commands, example
-import requests
-import urllib
-import re
 import random
-
+from sopel.module import commands, example
 
 BOOBS = [
-  "(.)(.)",
-  "(.) (.)",
-  "( . Y . )",
-  "( -  )(  - )",
-  "( o  )(  o )",
-  "(O Y O)",
-  "( · )( · )",
-  "( \u0E4F Y \u0E4F )", #  ( ๏ Y ๏ )
-  "\uFF08\u3002 \u3145  \u3002\uFF09" # （。 ㅅ  。）
+    "(.)(.)",
+    "(.) (.)",
+    "( . Y . )",
+    "( -  )(  - )",
+    "( o  )(  o )",
+    "(O Y O)",
+    "( · )( · )",
+    "( \u0E4F Y \u0E4F )",  # ( ๏ Y ๏ )
+    "\uFF08\u3002 \u3145  \u3002\uFF09"  # （。 ㅅ  。）
 ]
+
 
 @commands('boobs')
 @commands('tits')
@@ -54,6 +51,7 @@ PENISES = [
     "°|°",
     "`(_)_)=============D~~~~~`"
 ]
+
 
 @commands('penis')
 @commands('piemel')
@@ -108,14 +106,15 @@ def vagie(bot, trigger):
 
 
 ASSES = [
-  "(  Y  )",
-  "(   )(   )",
-  "(  )(  )",
-  "( Y )",
-  "( : )",
-  "OO",
-  "oo"
+    "(  Y  )",
+    "(   )(   )",
+    "(  )(  )",
+    "( Y )",
+    "( : )",
+    "OO",
+    "oo"
 ]
+
 
 @commands('ass')
 @commands('butt')
@@ -139,3 +138,9 @@ def badum(bot, trigger):
 def bigmoney(bot, trigger):
     """.bigmoney"""
     bot.say("`(_)_)=============D~~~$$$~~~`")
+
+@commands('jeffbezosrocket')
+@example('.jeffbezosrocket')
+def bigmoney(bot, trigger):
+    """.jeffbezosrocket"""
+    bot.say("`(_)_)=============D`")
