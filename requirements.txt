@@ -1,4 +1,5 @@
 sopel-modules.imdb
 sopel-modules.urban
 sopel-modules.weather
+sopel-modules.wikipedia
 geoip2
