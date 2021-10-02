@@ -134,13 +134,8 @@ def badum(bot, trigger):
 
 
 @commands('bigmoney')
+@commands('jeffbezosrocket')
 @example('.bigmoney')
 def bigmoney(bot, trigger):
     """.bigmoney"""
     bot.say("`(_)_)=============D~~~$$$~~~`")
-
-@commands('jeffbezosrocket')
-@example('.jeffbezosrocket')
-def bigmoney(bot, trigger):
-    """.jeffbezosrocket"""
-    bot.say("`(_)_)=============D`")
