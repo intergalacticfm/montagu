@@ -61,6 +61,7 @@ class GfyCat(object):
 
 
 @commands('gfy')
+@commands('gif')
 @example('.gfy cat')
 def giphy(bot, trigger):
     """.gfy cat"""
