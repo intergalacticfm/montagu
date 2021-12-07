@@ -139,3 +139,27 @@ def badum(bot, trigger):
 def bigmoney(bot, trigger):
     """.bigmoney"""
     bot.say("`(_)_)=============D~~~$$$~~~`")
+
+COFFEES = [
+    ":coffee:",
+    ":coffeebounce:",
+    ":coffeemug:",
+    ":partycoffee:",
+    ":tea:"
+]
+
+@commands('bakkie')
+@commands('coffee')
+@commands('catpipi')
+@example('.bakkie')
+def bakkie(bot, trigger):
+    """.bakkie"""
+    bot.say(random.choice(COFFEES))
+
+@commands('tea')
+@example('.tea')
+def tea(bot, trigger):
+    """.tea"""
+    bot.say(':tea:')
+
+
