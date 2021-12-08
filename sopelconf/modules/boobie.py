@@ -151,6 +151,8 @@ COFFEES = [
 @commands('bakkie')
 @commands('coffee')
 @commands('catpipi')
+@commands('pleur')
+@commands('geef')
 @example('.bakkie')
 def bakkie(bot, trigger):
     """.bakkie"""
