@@ -39,10 +39,11 @@ REELS = [
 
 
 def register_hold(user_machine, hold):
-    reel_index = int(hold[1])
-    if reel_index < 4:
-        user_machine['reels'].get(reel_index)['hold'] = True
-        user_machine['holding'] = True
+    if user_machine['spinsLeft'] < 3:
+        reel_index = int(hold[1])
+        if reel_index < 4:
+            user_machine['reels'].get(reel_index)['hold'] = True
+            user_machine['holding'] = True
 
 
 def spin_reel(user_machine, reel_index):
