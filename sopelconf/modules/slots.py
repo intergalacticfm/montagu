@@ -4,12 +4,19 @@ from sopel.module import commands, example
 
 userMachines = {}
 
+stats = {
+    "wins": 0,
+    "spins": 0
+}
+
 REELS = [
     [
         ":pa:",
         ":ifm:",
-        ":ironcross:",
         ":mc:",
+        ":cbs:",
+        ":df:",
+        ":tdm:",
         ":hotmix:",
         ":viewlexx:",
         ":reveal1:"
@@ -17,8 +24,10 @@ REELS = [
     [
         ":na:",
         ":ifm:",
-        ":ironcross:",
         ":mc:",
+        ":cbs:",
+        ":df:",
+        ":tdm:",
         ":hotmix:",
         ":viewlexx:",
         ":reveal2:"
@@ -26,8 +35,10 @@ REELS = [
     [
         ":ma:",
         ":ifm:",
-        ":ironcross:",
         ":mc:",
+        ":cbs:",
+        ":df:",
+        ":tdm:",
         ":hotmix:",
         ":viewlexx:",
         ":reveal3:"
@@ -36,11 +47,13 @@ REELS = [
 
 
 def register_hold(user_machine, hold):
-    if user_machine['spinsLeft'] < 3:
+    if user_machine['spinsLeft'] < 4:
         reel_index = int(hold[1])
         if reel_index < 4:
             user_machine['reels'].get(reel_index)['hold'] = True
             user_machine['holding'] = True
+
+
 def spin_reel(user_machine, reel_index):
     reel = user_machine['reels'].get(reel_index)
 
@@ -54,7 +67,13 @@ def winning(user_machine) -> bool:
            special_win(user_machine, ':reveal1:', ':reveal2:', ':reveal3:') or \
            special_win(user_machine, ':pa:', ':na:', ':ma:') or \
            special_win(user_machine, ':pa:', ':na:', ':reveal3:') or \
-           special_win(user_machine, ':viewlexx:', ':na:', ':mc:')
+           special_win(user_machine, ':viewlexx:', ':na:', ':mc:') or \
+           special_win(user_machine, ':cbs:', ':df:', ':tdm:') or \
+           special_win(user_machine, ':cbs:', ':tdm:', ':df:') or \
+           special_win(user_machine, ':df:', ':tdm:', ':cbs:') or \
+           special_win(user_machine, ':df:', ':cbs:', ':tdm:') or \
+           special_win(user_machine, ':tdm:', ':cbs:', ':df:') or \
+           special_win(user_machine, ':tdm:', ':df:', ':cbs:')
 
 
 def special_win(user_machine, reel1_, reel2_, reel3_) -> bool:
@@ -76,7 +95,11 @@ def slots(bot, trigger):
         reset_spins(user_machine)
 
     if trigger.group(3):
-        register_hold(user_machine, trigger.group(3))
+        if trigger.group(3) == 'stats':
+            bot.reply("Total of all Spins: {} Wins: {}".format(stats['spins'], stats['wins']))
+            return
+        else:
+            register_hold(user_machine, trigger.group(3))
 
     if trigger.group(4):
         register_hold(user_machine, trigger.group(4))
@@ -85,15 +108,15 @@ def slots(bot, trigger):
         bot.reply("You can't hold more than two reels")
         return
 
-    spin_reel(user_machine, 1)
-    spin_reel(user_machine, 2)
-    spin_reel(user_machine, 3)
+    spin_reels(user_machine)
+
     reply += ('%s%s - %s%s - %s%s' % (
         user_machine['reels'].get(1)['symbol'], '*' if user_machine['reels'].get(1)['hold'] else '',
         user_machine['reels'].get(2)['symbol'], '*' if user_machine['reels'].get(2)['hold'] else '',
         user_machine['reels'].get(3)['symbol'], '*' if user_machine['reels'].get(3)['hold'] else ''))
 
     if winning(user_machine):
+        stats['wins'] += 1
         reset_spins(user_machine)
         reply += ' WIN WIN WIN'
     else:
@@ -108,9 +131,16 @@ def slots(bot, trigger):
     bot.reply(reply)
 
 
+def spin_reels(user_machine):
+    stats['spins'] += 1
+    spin_reel(user_machine, 1)
+    spin_reel(user_machine, 2)
+    spin_reel(user_machine, 3)
+
+
 def initialize_user_machine(trigger):
     nick = trigger.nick
-    userMachines[nick] = userMachines.get(nick, {"spinsLeft": 3,
+    userMachines[nick] = userMachines.get(nick, {"spinsLeft": 4,
                                                  "holding": False,
                                                  "reels": {1: {"hold": False, "symbol": ""},
                                                            2: {"hold": False, "symbol": ""},
@@ -125,7 +155,7 @@ def register_spin(user_machine) -> int:
 
 
 def reset_spins(user_machine):
-    user_machine['spinsLeft'] = 3
+    user_machine['spinsLeft'] = 4
 
     if user_machine['holding']:
         user_machine['reels'].get(1)['hold'] = False
