@@ -51,10 +51,15 @@ def spin_reel(user_machine, reel_index):
 def winning(user_machine) -> bool:
     return user_machine['reels'].get(1)['symbol'] == user_machine['reels'].get(2)['symbol'] == \
            user_machine['reels'].get(3)['symbol'] or \
-           (user_machine['reels'].get(1)['symbol'] == ':reveal1:' and user_machine['reels'].get(2)[
-               'symbol'] == ':reveal2:' and user_machine['reels'].get(3)['symbol'] == ':reveal3:') or \
-           (user_machine['reels'].get(1)['symbol'] == ':pa:' and user_machine['reels'].get(2)[
-               'symbol'] == ':na:' and user_machine['reels'].get(3)['symbol'] == ':ma:')
+           special_win(user_machine, ':reveal1:', ':reveal2:', ':reveal3:') or \
+           special_win(user_machine, ':pa:', ':na:', ':ma:') or \
+           special_win(user_machine, ':pa:', ':na:', ':reveal3:') or \
+           special_win(user_machine, ':viewlexx:', ':na:', ':mc:')
+
+
+def special_win(user_machine, reel1_, reel2_, reel3_) -> bool:
+    return (user_machine['reels'].get(1)['symbol'] == reel1_ and user_machine['reels'].get(2)[
+        'symbol'] == reel2_ and user_machine['reels'].get(3)['symbol'] == reel3_)
 
 
 @commands('s')
