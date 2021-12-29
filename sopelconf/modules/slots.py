@@ -10,8 +10,8 @@ REELS = [
         ":7-11:",
         ":ironcross:",
         ":mc:",
-        ":money_with_wings:",
-        ":grapes:",
+        ":hotmix:",
+        ":viewlexx:",
         ":reveal1:"
     ],
     [
@@ -19,8 +19,8 @@ REELS = [
         ":7-11:",
         ":ironcross:",
         ":mc:",
-        ":money_with_wings:",
-        ":grapes:",
+        ":hotmix:",
+        ":viewlexx:",
         ":reveal2:"
     ],
     [
@@ -28,8 +28,8 @@ REELS = [
         ":7-11:",
         ":ironcross:",
         ":mc:",
-        ":money_with_wings:",
-        ":grapes:",
+        ":hotmix:",
+        ":viewlexx:",
         ":reveal3:"
     ]
 ]
@@ -52,7 +52,9 @@ def winning(user_machine) -> bool:
     return user_machine['reels'].get(1)['symbol'] == user_machine['reels'].get(2)['symbol'] == \
            user_machine['reels'].get(3)['symbol'] or \
            (user_machine['reels'].get(1)['symbol'] == ':reveal1:' and user_machine['reels'].get(2)[
-               'symbol'] == ':reveal2:' and user_machine['reels'].get(3)['symbol'] == ':reveal3:')
+               'symbol'] == ':reveal2:' and user_machine['reels'].get(3)['symbol'] == ':reveal3:') or \
+           (user_machine['reels'].get(1)['symbol'] == ':pa:' and user_machine['reels'].get(2)[
+               'symbol'] == ':na:' and user_machine['reels'].get(3)['symbol'] == ':ma:')
 
 
 @commands('s')
