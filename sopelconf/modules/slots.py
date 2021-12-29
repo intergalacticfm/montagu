@@ -7,7 +7,7 @@ userMachines = {}
 REELS = [
     [
         ":pa:",
-        ":7-11:",
+        ":ifm:",
         ":ironcross:",
         ":mc:",
         ":hotmix:",
@@ -16,7 +16,7 @@ REELS = [
     ],
     [
         ":na:",
-        ":7-11:",
+        ":ifm:",
         ":ironcross:",
         ":mc:",
         ":hotmix:",
@@ -25,7 +25,7 @@ REELS = [
     ],
     [
         ":ma:",
-        ":7-11:",
+        ":ifm:",
         ":ironcross:",
         ":mc:",
         ":hotmix:",
