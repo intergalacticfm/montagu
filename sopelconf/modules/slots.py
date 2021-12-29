@@ -6,8 +6,7 @@ userMachines = {}
 
 REELS = [
     [
-        ":cherries:",
-        ":peach:",
+        ":pa:",
         ":7-11:",
         ":ironcross:",
         ":mc:",
@@ -16,8 +15,7 @@ REELS = [
         ":reveal1:"
     ],
     [
-        ":cherries:",
-        ":peach:",
+        ":na:",
         ":7-11:",
         ":ironcross:",
         ":mc:",
@@ -26,8 +24,7 @@ REELS = [
         ":reveal2:"
     ],
     [
-        ":cherries:",
-        ":peach:",
+        ":ma:",
         ":7-11:",
         ":ironcross:",
         ":mc:",
@@ -44,8 +41,6 @@ def register_hold(user_machine, hold):
         if reel_index < 4:
             user_machine['reels'].get(reel_index)['hold'] = True
             user_machine['holding'] = True
-
-
 def spin_reel(user_machine, reel_index):
     reel = user_machine['reels'].get(reel_index)
 
