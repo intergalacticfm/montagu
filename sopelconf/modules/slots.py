@@ -6,6 +6,7 @@ userMachines = {}
 
 stats = {
     "wins": 0,
+    "jackpot": 0,
     "spins": 0
 }
 
@@ -88,7 +89,7 @@ def special_win(user_machine, reel1_, reel2_, reel3_) -> bool:
 @commands('ד')
 @example('.s')
 def slots(bot, trigger):
-    """.spro"""
+    """.s"""
     reply = ""
     user_machine = initialize_user_machine(trigger)
     if not trigger.group(2) and not user_machine['holding']:
@@ -97,6 +98,9 @@ def slots(bot, trigger):
     if trigger.group(3):
         if trigger.group(3) == 'stats':
             bot.reply("Total of all Spins: {} Wins: {}".format(stats['spins'], stats['wins']))
+            return
+        if trigger.group(3) == 'jackpot':
+            bot.reply("Jackpot is loaded with {}k".format(stats['jackpot']))
             return
         else:
             register_hold(user_machine, trigger.group(3))
@@ -118,7 +122,8 @@ def slots(bot, trigger):
     if winning(user_machine):
         stats['wins'] += 1
         reset_spins(user_machine)
-        reply += ' WIN WIN WIN'
+        reply += ' WIN WIN WIN {} K'.format(stats['jackpot'])
+        stats['jackpot'] = 0
     else:
         register_spin(user_machine)
         if user_machine['holding']:
@@ -133,6 +138,7 @@ def slots(bot, trigger):
 
 def spin_reels(user_machine):
     stats['spins'] += 1
+    stats['jackpot'] += 1
     spin_reel(user_machine, 1)
     spin_reel(user_machine, 2)
     spin_reel(user_machine, 3)
