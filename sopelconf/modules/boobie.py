@@ -153,15 +153,27 @@ COFFEES = [
 @commands('catpipi')
 @commands('pleur')
 @commands('geef')
+@commands('koffie')
 @example('.bakkie')
 def bakkie(bot, trigger):
     """.bakkie"""
     bot.say(random.choice(COFFEES))
 
 @commands('tea')
+@commands('thee')
 @example('.tea')
 def tea(bot, trigger):
     """.tea"""
     bot.say(':tea:')
+
+@commands('wine')
+@commands('wijn')
+@commands('vin')
+@commands('vino')
+@commands('tinto')
+@example('.wine')
+def wine(bot, trigger):
+    """.wine"""
+    bot.say(':wine_glass:')
 
 
