@@ -176,4 +176,34 @@ def wine(bot, trigger):
     """.wine"""
     bot.say(':wine_glass:')
 
+@commands('hamburger')
+@commands('hamburguesa')
+@example('.hamburger')
+def wine(bot, trigger):
+    """.hamburger"""
+    bot.say(':hamburger:')
+
+@commands('bubbels')
+@commands('champagne')
+@example('.bubbels')
+def wine(bot, trigger):
+    """.bubbels"""
+    bot.say(':clinking_glasses:')
+
+@commands('beer')
+@commands('bier')
+@commands('cerveza')
+@example('.beer')
+def beer(bot, trigger):
+    """.beer"""
+    bot.say(':beer:')
+
+@commands('biertjes')
+@commands('beers')
+@commands('cervezas')
+@example('.beers')
+def beers(bot, trigger):
+    """.beers"""
+    bot.say(':beers:')
+
 
