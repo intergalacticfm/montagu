@@ -179,14 +179,14 @@ def wine(bot, trigger):
 @commands('hamburger')
 @commands('hamburguesa')
 @example('.hamburger')
-def wine(bot, trigger):
+def hamburger(bot, trigger):
     """.hamburger"""
     bot.say(':hamburger:')
 
 @commands('bubbels')
 @commands('champagne')
 @example('.bubbels')
-def wine(bot, trigger):
+def bubbels(bot, trigger):
     """.bubbels"""
     bot.say(':clinking_glasses:')
 
